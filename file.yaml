@@ -1,0 +1,8 @@
+---
+  - name: create empty file
+    host: localhost
+    tasks:
+      - name: create file
+        command: touch nara
+        
+
