@@ -1,0 +1,9 @@
+---
+  - name: selinux disable
+    hosts: localhost
+    tasks: 
+      - name: Selinux Disabled
+        selinux:
+          state: disabled
+      - name: Selinux Reboot
+        reboot:
