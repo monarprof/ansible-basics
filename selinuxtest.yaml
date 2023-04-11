@@ -1,0 +1,11 @@
+---
+  - name: disable config for SELinux and Reboot system
+    hosts: localhost
+    tasks:
+      - name: disable SELinux
+        lineinfile:
+          path: /etc/selinux/config
+          regexp: '^SELINUX='
+          line: 'SELINUX=disabled'
+      - name: Reboot system
+        command: reboot
