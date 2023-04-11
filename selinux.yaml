@@ -3,7 +3,11 @@
     hosts: localhost
     tasks: 
       - name: Selinux Disabled
-        selinux:
-          state: disabled
-      - name: Selinux Reboot
-        reboot:
+        lineinfile:
+          path: /etc/selinux/config
+          regexp: "^selinux="
+          line: SELINUX=disabled
+
+      - name: reboot server
+        command: reboot
+      
