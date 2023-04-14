@@ -1,0 +1,21 @@
+---
+  - name: Host1 Report
+    hosts: 10.118.0.3
+    tasks:
+      - name: check hostname
+        command: hostnamectl
+        register: myoutput1
+      
+      - name: check disk usage
+        command: df -h
+        register: myoutput2
+      
+      - name: check memory
+        command: free -m 
+        register: myoutput3
+      - name: print message
+        debug:
+          msg:
+          - "{{ myoutput1 }}"
+          - "{{ myoutput2 }}"
+          - "{{ myoutput3 }}"        

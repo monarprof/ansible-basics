@@ -1,0 +1,17 @@
+---
+  
+  - name: install, start and enable Apache
+    hosts: 10.118.0.3
+    gather_facts: yes
+    tasks: 
+      - name: Install Apache
+        yum: 
+          name: httpd
+          state: latest
+        when: ansible_distribution == "CentOS"  
+      - name: start and enable
+        systemd:
+          name: httpd
+          state: started  
+          enabled: yes
+        when: ansible_distribution == "CentOS"  
